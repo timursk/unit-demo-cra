@@ -21,6 +21,24 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 18
+    
+    - name: Update CHANGELOG
+      id: changelog
+      uses: requarks/changelog-action@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        tag: ${{ github.ref_name }}
+    
+    - name: Commit CHANGELOG.md
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        branch: master
+        commit_message: 'docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]'
+        file_pattern: CHANGELOG.md
+    
+    - run: cat .github/CHANGELOG.md
+    - run: ls -1
+
     - name: Create an issue
       uses: JasonEtco/create-an-issue@v2.9.1
     env:
