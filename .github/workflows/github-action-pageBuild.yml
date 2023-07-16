@@ -27,10 +27,10 @@ jobs:
           issue-number: ${{ steps.last-issue.outputs.issue-number }}
 
       - name: Close Issue
-        if: ${{ steps.last-issue.outputs.has-found == 'true' }}
-        run: gh issue close --comment "Auto-closing issue" "1"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: peter-evans/close-issue@v3
+        with:
+          issue-number: ${{ steps.last-issue.outputs.issue-number }}
+          comment: Auto-closing issue
 
                     
     env:
