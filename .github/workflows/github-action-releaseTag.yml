@@ -38,6 +38,11 @@ jobs:
     # - run: cat .github/CHANGELOG.md
     - run: cat CHANGELOG.md
     - run: ls -1
+    - run: sh issue-maker.sh
+      env:
+        REF_NAME: ${{ github.ref_name }}
+        ACTOR: ${{ github.actor }}
+
     - run: cat ISSUE.md CHANGELOG.md > .github/ISSUE_TEMPLATE.md
 
     - name: Create an issue

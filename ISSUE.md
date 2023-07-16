@@ -1,4 +1,5 @@
 ---
-title: Weekly Radar {{ date | date('dddd, MMMM Do') }}
+title: Release tag
+labels: RELEASE
 ---
-TEST ISSUE
+Release
