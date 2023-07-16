@@ -9,7 +9,7 @@ jobs:
       issues: write
     steps:
 
-      - run: echo ${{ github.event }}
+      - uses: actions/checkout@v3
 
       - name: Find the last open report issue
         id: last-issue
