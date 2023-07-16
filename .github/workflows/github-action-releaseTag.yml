@@ -20,6 +20,17 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 18
+    - run: npm ci
+    - run: npm run build
+    - run: npm test
+    - run: npx playwright install
+    - run: npx playwright test --project=chromium
+    - uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: playwright-report
+        path: playwright-report/
+        retention-days: 30
     
     - name: Update CHANGELOG
       id: changelog
@@ -28,14 +39,6 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         tag: ${{ github.ref_name }}
     
-    # - name: Commit CHANGELOG.md
-    #   uses: stefanzweifel/git-auto-commit-action@v4
-    #   with:
-    #     branch: master
-    #     commit_message: 'docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]'
-    #     file_pattern: CHANGELOG.md
-    
-    # - run: cat .github/CHANGELOG.md
     - run: cat CHANGELOG.md
     - run: ls -1
     - run: sh issue-maker.sh
