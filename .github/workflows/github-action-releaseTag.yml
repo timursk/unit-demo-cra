@@ -1,6 +1,6 @@
 name: Release Tag
 permissions:
-    contents: read
+    contents: write
     issues: write 
 on:
   push:
@@ -70,3 +70,5 @@ jobs:
         with:
           folder: build
           branch: gh-pages
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
