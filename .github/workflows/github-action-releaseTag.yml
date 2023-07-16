@@ -36,7 +36,8 @@ jobs:
     #     commit_message: 'docs: update CHANGELOG.md for ${{ github.ref_name }} [skip ci]'
     #     file_pattern: CHANGELOG.md
     
-    - run: cat .github/CHANGELOG.md
+    # - run: cat .github/CHANGELOG.md
+    - run: cat CHANGELOG.md
     - run: ls -1
 
     - name: Create an issue
