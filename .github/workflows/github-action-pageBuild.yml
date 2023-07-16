@@ -26,6 +26,12 @@ jobs:
             Build successfully completed
           issue-number: ${{ steps.last-issue.outputs.issue-number }}
 
+      - name: Close Issue
+        if: ${{ steps.last-issue.outputs.has-found == 'true' }}
+        run: gh issue close --comment "Auto-closing issue" "1"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
                     
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
