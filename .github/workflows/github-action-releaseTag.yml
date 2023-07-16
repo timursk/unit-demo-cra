@@ -1,0 +1,25 @@
+name: Release Tag
+
+on:
+  push:
+    branches: [ master ]
+    tags:
+        - 'v[0-9]+'
+        # git tag v15
+        # git push origin v15
+
+jobs:
+  release:
+    name: release on tag
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+      
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - name: Create an issue
+      uses: JasonEtco/create-an-issue@v2.9.1
+    env:
+      GITHUB_TOKEN: ${{ secrets.TOKEN }}
