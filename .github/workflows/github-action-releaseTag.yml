@@ -42,7 +42,7 @@ jobs:
       env:
         REF_NAME: ${{ github.ref_name }}
         ACTOR: ${{ github.actor }}
-
+    - run: cat ISSUE.md
     - run: cat ISSUE.md CHANGELOG.md > .github/ISSUE_TEMPLATE.md
 
     - name: Create an issue
