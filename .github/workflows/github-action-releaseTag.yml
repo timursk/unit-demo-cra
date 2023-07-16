@@ -4,7 +4,6 @@ permissions:
     issues: write 
 on:
   push:
-    branches: [ master ]
     tags:
         - 'v[0-9]+'
         # git tag v15
