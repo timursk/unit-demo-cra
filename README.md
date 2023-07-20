@@ -28,3 +28,4 @@ git push origin v20
 7). Запись о билде появляется в том же issue, затем автоматически закрывается (см. вкладка issues -> closed)
 
 some changes for check
+somee changes
